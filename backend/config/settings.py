@@ -1,8 +1,28 @@
+import json
 import os
+import tempfile
 from dataclasses import dataclass
+from pathlib import Path
+
 from dotenv import load_dotenv
 
 load_dotenv()
+
+
+def resolve_google_application_credentials() -> str:
+    credentials_path = os.getenv("GOOGLE_APPLICATION_CREDENTIALS")
+    if credentials_path:
+        return credentials_path
+
+    credentials_json = os.getenv("GOOGLE_APPLICATION_CREDENTIALS_JSON")
+    if not credentials_json:
+        return "./service-account.json"
+
+    credentials = json.loads(credentials_json)
+    temp_credentials_path = Path(tempfile.gettempdir()) / "google-service-account.json"
+    temp_credentials_path.write_text(json.dumps(credentials), encoding="utf-8")
+    os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = str(temp_credentials_path)
+    return str(temp_credentials_path)
 
 
 @dataclass(frozen=True)
@@ -23,10 +43,7 @@ class Settings:
         "gemini-2.5-flash",
     )
 
-    google_application_credentials: str = os.getenv(
-        "GOOGLE_APPLICATION_CREDENTIALS",
-        "./service-account.json",
-    )
+    google_application_credentials: str = resolve_google_application_credentials()
 
     # Raw SupplyPulse dataset
     raw_data_path: str = os.getenv(
