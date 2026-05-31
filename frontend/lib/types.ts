@@ -175,6 +175,9 @@ export type PipelineResult = {
   responseSource?: "backend" | "sample";
   lastRunAt?: string;
   userQuestion?: string;
+  auditContext?: {
+    run_id?: string;
+  };
   routerResult?: Record<string, unknown>;
   scheduleResult?: ScheduleResult;
   geoResult?: GeoResult;
