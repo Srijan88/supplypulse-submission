@@ -89,6 +89,9 @@ A high value means the delivery timeline needs attention.
 
 ## Product Workflow
 
+<img width="1448" height="1086" alt="1 (2)" src="https://github.com/user-attachments/assets/10f5a6f3-de3e-481b-aadc-6531f7da8db8" />
+
+
 ```text
 User Question
     ↓
@@ -696,10 +699,5 @@ SupplyPulse turns static delivery tracking into an evidence-backed workflow for 
 
 ## License
 
-Add your selected license here.
-
-Recommended options:
-
-- MIT License for simple open-source release
-- Apache License 2.0 for a more formal open-source release
-- Private repository if the project contains proprietary implementation details
+- MIT License 
+- Apache License 2.0 
