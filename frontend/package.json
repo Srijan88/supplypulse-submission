@@ -12,7 +12,7 @@
     "@vis.gl/react-google-maps": "^1.8.3",
     "cross-env": "latest",
     "lucide-react": "latest",
-    "next": "latest",
+    "next": "^15.5.18",
     "react": "latest",
     "react-dom": "latest",
     "react-simple-maps": "^3.0.0"
